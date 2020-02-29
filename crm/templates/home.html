@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>This is a home page</h1>
+    {% for touch in touches %}
+        <h2>{{ touch.description }}</h2>
+        <p>At: {{ touch.date }}</p>
+    {% endfor %}
+{% endblock content %}
