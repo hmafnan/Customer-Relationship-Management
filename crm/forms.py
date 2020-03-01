@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
-from crm.models import User
+from crm.models import User, Lead
 
 
 class RegistrationForm(FlaskForm):
@@ -46,4 +46,10 @@ class LeadForm(FlaskForm):
 class TouchForm(FlaskForm):
     description = TextAreaField('Description', validators=[DataRequired(), Length(min=2)])
     lead_id = SelectField('Lead', validators=[DataRequired()], coerce=int)
+
     submit = SubmitField('Create Touch')
+
+    def validate_lead_id(self, lead_id):
+        lead = Lead.query.filter_by(id=lead_id.data).first()
+        if not lead:
+            raise ValidationError('Lead not exists')
