@@ -4,16 +4,26 @@ body {
   margin-top: 5rem;
 }
 
+h1, h2 {
+    font-family: oswald;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 40px!important;
+    font-size: 31px;
+    letter-spacing: 0.5px;
+}
+
 h1, h2, h3, h4, h5, h6 {
+  font-family: oswald;
   color: #444444;
 }
 
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #60134c;
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: #ddd9d9;
 }
 
 .site-header .navbar-nav .nav-link:hover {

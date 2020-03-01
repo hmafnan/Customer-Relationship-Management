@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>This is a home page</h1>
-    {% for touch in touches %}
-        <h2>{{ touch.description }}</h2>
-        <p>At: {{ touch.date }}</p>
-    {% endfor %}
+    <h1>Customer Relationship Management</h1>
+    <p>Purpose of this portal is to allow our admins to create new Leads. Allows them
+    to be in touch with leads and see list of all leads and their touches.</p>
+    <h3>How It Works</h3>
+    <ul>
+        <li>First Admin must register themselves in this portal</li>
+        <li>Login to the portal with their newly created account</li>
+        <li>Now they can create new leads and their touches from navigation links</li>
+        <li>They can also see list of leads and their touches if they exists</li>
+    </ul>
 {% endblock content %}
