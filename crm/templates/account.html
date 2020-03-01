@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Account Information</h1>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><label>Logged In As: </label></td>
+                <td>{{ current_user.username }}</td>
+            </tr>
+            <tr>
+                <td><label>Email: </label></td>
+                <td>{{ current_user.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock content %}

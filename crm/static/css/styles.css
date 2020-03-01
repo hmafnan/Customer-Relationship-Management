@@ -88,3 +88,13 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+#touches_table_wrapper input.form-control {
+  width: 220px !important;
+  display: inline !important;
+}
+
+#touches_table_wrapper select.form-control {
+  width: 100px !important;
+  display: inline !important;
+}

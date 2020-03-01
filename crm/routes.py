@@ -90,8 +90,8 @@ def touch():
                           lead_id=form.lead_id.data)
         db.session.add(new_touch)
         db.session.commit()
-        flash('Lead created', 'success')
-        return redirect(url_for('home'))
+        flash('Touch created', 'success')
+        return redirect(url_for('touches'))
     return render_template('touch.html', form=form)
 
 
