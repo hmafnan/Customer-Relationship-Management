@@ -1,6 +1,9 @@
+"""All models are defined here"""
+
 from datetime import datetime
-from crm import db, login_manager
 from flask_login import UserMixin
+
+from crm import db, login_manager
 
 
 @login_manager.user_loader
@@ -9,6 +12,7 @@ def load_user(user_id):
 
 
 class User(db.Model, UserMixin):
+    """User/Admin model"""
     id = db.Column(db.INTEGER, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -19,6 +23,7 @@ class User(db.Model, UserMixin):
 
 
 class Lead(db.Model):
+    """Lead model"""
     id = db.Column(db.INTEGER, primary_key=True)
     name = db.Column(db.String(50))
     company = db.Column(db.String(50))
@@ -31,6 +36,7 @@ class Lead(db.Model):
 
 
 class Touch(db.Model):
+    """Touch model"""
     id = db.Column(db.INTEGER, primary_key=True)
     description = db.Column(db.Text)
     date = db.Column(db.DATETIME, nullable=False, default=datetime.utcnow)

@@ -1,20 +1,23 @@
+"""All routes/views are defined here"""
+
+from flask import render_template, flash, redirect, url_for, request
+from flask_login import login_user, current_user, logout_user, login_required
+
 from crm import app, db, bcrypt
 from crm.forms import RegistrationForm, LoginForm, LeadForm, TouchForm
 from crm.models import User, Lead, Touch
-from flask_login import login_user, current_user, logout_user, login_required
-
-
-from flask import render_template, flash, redirect, url_for, request
 
 
 @app.route('/')
 @app.route('/home')
 def home():
+    """View for main home page"""
     return render_template('home.html',  touches=touches)
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """View to register new admin"""
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
@@ -30,6 +33,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """View to login admin, if he is already logged in redirect to home page"""
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
@@ -47,6 +51,7 @@ def login():
 
 @app.route('/logout')
 def logout():
+    """View to logout"""
     logout_user()
     return redirect(url_for('home'))
 
@@ -54,12 +59,14 @@ def logout():
 @app.route('/account')
 @login_required
 def account():
+    """View to see info of current logged in admin"""
     return render_template('account.html')
 
 
 @app.route('/lead', methods=['GET', 'POST'])
 @login_required
 def lead():
+    """View to create new lead"""
     form = LeadForm()
     if form.validate_on_submit():
         new_lead = Lead(name=form.name.data,
@@ -76,6 +83,7 @@ def lead():
 @app.route('/leads')
 @login_required
 def leads():
+    """View to see list of all leads"""
     all_leads = Lead.query.filter().all()
     return render_template('leads.html', leads=all_leads)
 
@@ -83,8 +91,9 @@ def leads():
 @app.route('/touch', methods=['GET', 'POST'])
 @login_required
 def touch():
+    """View to create new touch associated with the lead"""
     form = TouchForm()
-    form.lead_id.choices = [(g.id, g.name) for g in Lead.query.order_by('name')]
+    form.lead_id.choices = [(l.id, l.name) for l in Lead.query.order_by('name')]
     if form.validate_on_submit():
         new_touch = Touch(description=form.description.data,
                           lead_id=form.lead_id.data)
@@ -98,5 +107,6 @@ def touch():
 @app.route('/touches')
 @login_required
 def touches():
+    """View to see list of all touches"""
     all_touches = Touch.query.filter().all()
     return render_template('touches.html', touches=all_touches)

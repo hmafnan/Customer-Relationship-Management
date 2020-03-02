@@ -1,13 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Customer Relationship Management</h1>
-    <p>Purpose of this portal is to allow our admins to create new Leads. Allows them
-    to be in touch with leads and see list of all leads and their touches.</p>
-    <h3>How It Works</h3>
+    <p>Purpose of this portal is to allow our admins to create new leads.
+        Be able to be in touch with the leads and see all available leads and their touches.</p>
+    <h3>How it works</h3>
     <ul>
-        <li>First Admin must register themselves in this portal</li>
-        <li>Login to the portal with their newly created account</li>
+        <li>First User or Admin must register themselves in this portal</li>
+        <li>Login to the portal with your newly created account</li>
         <li>Now they can create new leads and their touches from navigation links</li>
         <li>They can also see list of leads and their touches if they exists</li>
+    </ul>
+    <h3>Dependencies</h3>
+    <ul>
+        <li>Python 3+ (Ideally 3.7)</li>
+        <li>PIP</li>
+    </ul>
+
+    <h3>Instructions to setup</h3>
+    <ul>
+        <li>CD to root of the repo</li>
+        <li>Create new virtual environment by using python 3.7</li>
+        <li>Activate newly created virtual environment</li>
+        <li>At the root do <i>pip install -r requirements.txt</i></li>
+        <li>Enter into python interpreter of this environment, then</li>
+        <li><i>>>> from crm import db</i></li>
+        <li><i>>>> db.create_all()</i></li>
+        <li><i>>>> exit()</i></li>
+        <li>Above commands should initialize databases</li>
+        <li>Do <i>python run.py</i> to run server locally</li>
+        <li>Visit localhost in the browser</li>
+        <li>Register from registration form</li>
+        <li>Login with those credentials to view full functionality</li>
     </ul>
 {% endblock content %}

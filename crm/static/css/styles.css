@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
 
+ul li i {
+  background-color: #e0e3e0;
+}
+
 .bg-steel {
   background-color: #60134c;
 }
